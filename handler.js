@@ -3,7 +3,7 @@ const express = require("express");
 const fs = require("fs");
 
 const app = express();
-
+/** Task 1 */
 app.get("/users/:id", (req, res, next) => {
   const id = req.params.id;
 
@@ -27,6 +27,7 @@ app.get("/users/:id", (req, res, next) => {
   });
 });
 
+/** Task 2 */
 app.get("/users/:position?", (req, res, next) => {
   const position = req.query.position;
 
@@ -34,6 +35,7 @@ app.get("/users/:position?", (req, res, next) => {
   let rawdata = fs.readFileSync("./assets/users.json");
   let users = JSON.parse(rawdata);
 
+  //perform filtering by user position
   const results = Object.values(users).filter((user) => {
     return user.position === position;
   });
